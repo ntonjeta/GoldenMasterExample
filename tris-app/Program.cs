@@ -6,18 +6,20 @@ namespace tris_app
 {
     class Program
     {
-        private const string InputPath = "input/input.txt";
+        private const string InputFolderPath = "input";
         private const string OutputPath = "output/output.txt";
 
         public static void Main(string[] args)
         {
-            var input = new StreamReader(new FileStream(InputPath, FileMode.Open));
-            var output = new StreamWriter(new FileStream(OutputPath, FileMode.Create));
-            Console.SetIn(input);
-            Console.SetOut(output);
-            Game.run();
-            input.Close();
-            output.Close();
+            foreach (var filePath in Directory.GetFiles(InputFolderPath)) {
+                var input = new StreamReader(new FileStream(filePath, FileMode.Open));
+                var output = new StreamWriter(new FileStream(OutputPath, FileMode.Append));
+                Console.SetIn(input);
+                Console.SetOut(output);
+                Game.run();
+                input.Close();
+                output.Close();
+            }
         }
     }
 }
