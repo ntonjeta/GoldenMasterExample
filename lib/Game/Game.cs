@@ -7,7 +7,7 @@ namespace Tris
     {
         //making array and   
         //by default I am providing 0-9 where no use of zero  
-        static char[] arr = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        static char[] initialArr = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };   
         static int player = 1; //By default player 1 is set  
         static int choice; //This holds the choice at which position user want to mark   
         // The flag veriable checks who has won if it's value is 1 then some one has won the match if -1 then Match has Draw if 0 then match is still running  
@@ -15,6 +15,9 @@ namespace Tris
 
         public static void run()
         {
+            char[] arr = new char[initialArr.Length];
+            Array.Copy(initialArr, arr, initialArr.Length);
+
             do
             {
                 Console.Clear();// whenever loop will be again start then screen will be clear  
@@ -30,7 +33,7 @@ namespace Tris
                 }
 
                 Console.WriteLine("\n");
-                Board();// calling the board Function  
+                Board(arr);// calling the board Function  
                 choice = int.Parse(Console.ReadLine());//Taking users choice   
 
                 // checking that position where user want to run is marked (with X or O) or not  
@@ -54,12 +57,12 @@ namespace Tris
                     Console.WriteLine("Please wait 2 second board is loading again.....");
                     Thread.Sleep(2000);
                 }
-                flag = CheckWin();// calling of check win  
+                flag = CheckWin(arr);// calling of check win  
             } while (flag != 1 && flag != -1);// This loof will be run until all cell of the grid is not marked with X and O or some player is not win  
 
             Console.Clear();// clearing the console  
 
-            Board();// getting filled board again  
+            Board(arr);// getting filled board again  
 
             if (flag == 1)// if flag value is 1 then some one has win or means who played marked last time which has win  
             {
@@ -75,7 +78,7 @@ namespace Tris
         }
 
         // Board method which creats board  
-        private static void Board()
+        private static void Board(char[] arr)
         {
             Console.WriteLine("     |     |      ");
             Console.WriteLine("  {0}  |  {1}  |  {2}", arr[1], arr[2], arr[3]);
@@ -88,7 +91,7 @@ namespace Tris
             Console.WriteLine("     |     |      ");
         }
 
-        private static int CheckWin()
+        private static int CheckWin(char[] arr)
         {
             #region Horzontal Winning Condtion
             //Winning Condition For First Row   

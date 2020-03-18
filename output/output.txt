@@ -120,35 +120,6 @@ Player 2 Chance
 
 
      |     |      
-  X  |  O  |  X
-_____|_____|_____ 
-     |     |      
-  O  |  X  |  O
-_____|_____|_____ 
-     |     |      
-  X  |  8  |  9
-     |     |      
-Sorry the row 1 is already marked with X
-
-
-Please wait 2 second board is loading again.....
-     |     |      
-  X  |  O  |  X
-_____|_____|_____ 
-     |     |      
-  O  |  X  |  O
-_____|_____|_____ 
-     |     |      
-  X  |  8  |  9
-     |     |      
-Player 1 has won
-Player1:X and Player2:O
-
-
-Player 1 Chance
-
-
-     |     |      
   1  |  2  |  3
 _____|_____|_____ 
      |     |      
@@ -160,11 +131,26 @@ _____|_____|_____
 Player1:X and Player2:O
 
 
+Player 1 Chance
+
+
+     |     |      
+  O  |  2  |  3
+_____|_____|_____ 
+     |     |      
+  4  |  5  |  6
+_____|_____|_____ 
+     |     |      
+  7  |  8  |  9
+     |     |      
+Player1:X and Player2:O
+
+
 Player 2 Chance
 
 
      |     |      
-  X  |  2  |  3
+  O  |  X  |  3
 _____|_____|_____ 
      |     |      
   4  |  5  |  6
@@ -179,7 +165,7 @@ Player 1 Chance
 
 
      |     |      
-  X  |  O  |  3
+  O  |  X  |  O
 _____|_____|_____ 
      |     |      
   4  |  5  |  6
@@ -194,10 +180,10 @@ Player 2 Chance
 
 
      |     |      
-  X  |  O  |  X
+  O  |  X  |  O
 _____|_____|_____ 
      |     |      
-  4  |  5  |  6
+  4  |  X  |  6
 _____|_____|_____ 
      |     |      
   7  |  8  |  9
@@ -209,22 +195,7 @@ Player 1 Chance
 
 
      |     |      
-  X  |  O  |  X
-_____|_____|_____ 
-     |     |      
-  O  |  5  |  6
-_____|_____|_____ 
-     |     |      
-  7  |  8  |  9
-     |     |      
-Player1:X and Player2:O
-
-
-Player 2 Chance
-
-
-     |     |      
-  X  |  O  |  X
+  O  |  X  |  O
 _____|_____|_____ 
      |     |      
   O  |  X  |  6
@@ -232,57 +203,13 @@ _____|_____|_____
      |     |      
   7  |  8  |  9
      |     |      
-Player1:X and Player2:O
-
-
-Player 1 Chance
-
-
-     |     |      
-  X  |  O  |  X
-_____|_____|_____ 
      |     |      
   O  |  X  |  O
 _____|_____|_____ 
      |     |      
-  7  |  8  |  9
-     |     |      
-     |     |      
-  X  |  O  |  X
+  O  |  X  |  6
 _____|_____|_____ 
      |     |      
-  O  |  X  |  O
-_____|_____|_____ 
-     |     |      
-  X  |  8  |  9
-     |     |      
-Player 1 has won
-Player1:X and Player2:O
-
-
-Player 2 Chance
-
-
-     |     |      
-  X  |  O  |  X
-_____|_____|_____ 
-     |     |      
-  O  |  X  |  O
-_____|_____|_____ 
-     |     |      
-  X  |  8  |  9
-     |     |      
-Sorry the row 1 is already marked with X
-
-
-Please wait 2 second board is loading again.....
-     |     |      
-  X  |  O  |  X
-_____|_____|_____ 
-     |     |      
-  O  |  X  |  O
-_____|_____|_____ 
-     |     |      
-  X  |  8  |  9
+  7  |  X  |  9
      |     |      
 Player 1 has won
