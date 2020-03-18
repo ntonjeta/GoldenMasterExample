@@ -6,8 +6,8 @@ namespace tris_app
 {
     class Program
     {
-        private const string InputPath = "input.txt";
-        private const string OutputPath = "output.txt";
+        private const string InputPath = "input/input.txt";
+        private const string OutputPath = "output/output.txt";
 
         public static void Main(string[] args)
         {
