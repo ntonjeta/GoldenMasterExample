@@ -8,7 +8,7 @@ namespace Tris
         //making array and   
         //by default I am providing 0-9 where no use of zero  
         static char[] initialArr = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };   
-        static int player = 1; //By default player 1 is set  
+        static int initianPlayer = 1; //By default player 1 is set  
         static int choice; //This holds the choice at which position user want to mark   
         // The flag veriable checks who has won if it's value is 1 then some one has won the match if -1 then Match has Draw if 0 then match is still running  
         static int flag = 0;
@@ -17,6 +17,7 @@ namespace Tris
         {
             char[] arr = new char[initialArr.Length];
             Array.Copy(initialArr, arr, initialArr.Length);
+            int player = initianPlayer;
 
             do
             {
