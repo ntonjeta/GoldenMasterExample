@@ -7,7 +7,7 @@ namespace tris_app
     class Program
     {
         private const string InputFolderPath = "input/";
-        private const string OutputFolderPath = "output/";
+        private const string OutputFolderPath = "goldenMaster/";
 
         public static void Main(string[] args)
         {
