@@ -27,8 +27,48 @@ namespace GoldenMasterExampleTest
         public void WinPlayerOne()
         {
             inputPath = InputFolderPath + "input1.txt";
-            outputPath = OutputFolderPath + "output1.txt";
+            outputPath = OutputFolderPath + "output.txt";
             var goldenMasterOutput = GoldenMasterOutput + "output1.txt";
+
+            var input = new StreamReader(new FileStream(inputPath, FileMode.Open));
+            var output = new StreamWriter(new FileStream(outputPath, FileMode.CreateNew));
+            Console.SetIn(input);
+            Console.SetOut(output);
+
+            Game.run();
+
+            input.Close();
+            output.Close();
+
+            Assert.True(AreFileEquals(goldenMasterOutput, outputPath));
+        }
+
+        [Test]
+        public void WinPlayerTwo()
+        {
+            inputPath = InputFolderPath + "input2.txt";
+            outputPath = OutputFolderPath + "output.txt";
+            var goldenMasterOutput = GoldenMasterOutput + "output2.txt";
+
+            var input = new StreamReader(new FileStream(inputPath, FileMode.Open));
+            var output = new StreamWriter(new FileStream(outputPath, FileMode.CreateNew));
+            Console.SetIn(input);
+            Console.SetOut(output);
+
+            Game.run();
+
+            input.Close();
+            output.Close();
+
+            Assert.True(AreFileEquals(goldenMasterOutput, outputPath));
+        }
+
+        [Test]
+        public void Draw()
+        {
+            inputPath = InputFolderPath + "input3.txt";
+            outputPath = OutputFolderPath + "output.txt";
+            var goldenMasterOutput = GoldenMasterOutput + "output3.txt";
 
             var input = new StreamReader(new FileStream(inputPath, FileMode.Open));
             var output = new StreamWriter(new FileStream(outputPath, FileMode.CreateNew));
