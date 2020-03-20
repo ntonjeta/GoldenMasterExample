@@ -14,7 +14,7 @@ namespace tris_app
             int i = 1;
             foreach (var filePath in Directory.GetFiles(InputFolderPath)) {
                 var input = new StreamReader(new FileStream(filePath, FileMode.Open));
-                var output = new StreamWriter(new FileStream(OutputFolderPath + "output" + i.ToString() + ".txt" , FileMode.Append));
+                var output = new StreamWriter(new FileStream(OutputFolderPath + "output" + i.ToString() + ".txt" , FileMode.CreateNew));
                 Console.SetIn(input);
                 Console.SetOut(output);
                 Game.run();
