@@ -76,7 +76,7 @@ namespace Tris
 
         private static bool isBoardCellAlreadyTaken(char[] board, int choice)
         {
-            return board[choice] != Player1Mark && board[choice] != Player2Mark;
+            return board[choice] == Player1Mark || board[choice] == Player2Mark;
         }
 
         // Board method which creats board  
