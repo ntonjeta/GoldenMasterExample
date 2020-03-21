@@ -30,20 +30,16 @@ namespace Tris
             } while (CheckWin(board) == 0);
 
             Console.Clear();
-
             PrintBoard(board);
-
-            if (CheckWin(board) == 1)// 1 actualPlayer wins!
-            {
-                Console.WriteLine("Player {0} has won", (actualPlayer % 2) + 1);
-            }
-
-            else // -1 Draw.
-            {
-                Console.WriteLine("Draw");
-            }
-
+            Console.WriteLine( (ActualPlayerWin(board)) 
+                    ? string.Format("Player {0} has won", (actualPlayer % 2) + 1)
+                    : "Draw");
             Console.ReadLine();
+        }
+
+        private static bool ActualPlayerWin(char[] board)
+        {
+            return CheckWin(board) == 1;
         }
 
         private static char MarkCellOnBoard(int actualPlayer)
