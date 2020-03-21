@@ -5,6 +5,9 @@ namespace Tris
 {
     public class Game
     {
+        private const char Player2Mark = 'O';
+        private const char Player1Mark = 'X';
+
         public static void run()
         {
             char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
@@ -32,16 +35,16 @@ namespace Tris
                 choice = int.Parse(Console.ReadLine());//Taking users choice   
 
                 // checking that position where user want to run is marked (with X or O) or not  
-                if (board[choice] != 'X' && board[choice] != 'O')
+                if (board[choice] != Player1Mark && board[choice] != Player2Mark)
                 {
                     if (player % 2 == 0) //if chance is of player 2 then mark O else mark X  
                     {
-                        board[choice] = 'O';
+                        board[choice] = Player2Mark;
                         player = (player + 1) % 2;
                     }
                     else
                     {
-                        board[choice] = 'X';
+                        board[choice] = Player1Mark;
                         player = (player + 1) % 2;
                     }
                 }
