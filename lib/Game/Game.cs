@@ -44,7 +44,7 @@ namespace Tris
                     continue;
                 }
 
-                board[choice] = (actualPlayer % 2 == Player2) ? Player2Mark : Player1Mark;
+                board[choice] = (actualPlayer == Player2) ? Player2Mark : Player1Mark;
 
                 actualPlayer = UpdatePlayer(actualPlayer);
 
