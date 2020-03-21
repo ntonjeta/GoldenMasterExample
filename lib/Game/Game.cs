@@ -19,11 +19,8 @@ namespace Tris
             do
             {
                 PrintPlayerChoise(actualPlayer);
-
                 PrintBoard(board);
-
-                choice = int.Parse(Console.ReadLine());//Taking users choice   
-
+                choice = ReadPlayerChoise();
                 if (isBoardCellAlreadyTaken(board, choice))
                 {
                     Console.WriteLine("Sorry the row {0} is already marked with {1}", choice, board[choice]);
@@ -56,6 +53,11 @@ namespace Tris
             }
 
             Console.ReadLine();
+        }
+
+        private static int ReadPlayerChoise()
+        {
+            return int.Parse(Console.ReadLine());
         }
 
         private static void PrintPlayerChoise(int actualPlayer)
