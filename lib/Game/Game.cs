@@ -30,12 +30,11 @@ namespace Tris
                 }
 
                 Console.WriteLine("\n");
-                PrintBoard(board);// calling the board Function  
+                PrintBoard(board);
 
                 choice = int.Parse(Console.ReadLine());//Taking users choice   
 
-                // checking that position where user want to run is marked (with X or O) or not  
-                if (board[choice] != Player1Mark && board[choice] != Player2Mark)
+                if (! isBoardCellAlreadyTaken(board, choice))
                 {
                     if (player % 2 == 0) //if chance is of player 2 then mark O else mark X  
                     {
@@ -73,6 +72,11 @@ namespace Tris
             }
 
             Console.ReadLine();
+        }
+
+        private static bool isBoardCellAlreadyTaken(char[] board, int choice)
+        {
+            return board[choice] != Player1Mark && board[choice] != Player2Mark;
         }
 
         // Board method which creats board  
