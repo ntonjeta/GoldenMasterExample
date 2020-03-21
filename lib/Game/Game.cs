@@ -9,17 +9,18 @@ namespace Tris
         private const char Player1Mark = 'X';
         private const int Player2 = 0;
         private const int NumberOfPlayer = 2;
+        private const int MatrixDimension = 3;
 
         public static void run()
         {
-            char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] board = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             int actualPlayer = 1;
 
             while (CheckWin(board) == 0)
             {
                 PrintPlayerChoise(actualPlayer);
                 PrintBoard(board);
-                var choice = ReadPlayerChoise();
+                var choice = ReadPlayerChoise() - 1;
                 if (isBoardCellAlreadyTaken(board[choice]))
                 {
                     PrintCellIsAlreadyMarketMessage(board[choice], choice);
@@ -87,83 +88,70 @@ namespace Tris
         private static void PrintBoard(char[] board)
         {
             Console.WriteLine("     |     |      ");
-            Console.WriteLine("  {0}  |  {1}  |  {2}", board[1], board[2], board[3]);
+            Console.WriteLine("  {0}  |  {1}  |  {2}", board[0], board[1], board[2]);
             Console.WriteLine("_____|_____|_____ ");
             Console.WriteLine("     |     |      ");
-            Console.WriteLine("  {0}  |  {1}  |  {2}", board[4], board[5], board[6]);
+            Console.WriteLine("  {0}  |  {1}  |  {2}", board[3], board[4], board[5]);
             Console.WriteLine("_____|_____|_____ ");
             Console.WriteLine("     |     |      ");
-            Console.WriteLine("  {0}  |  {1}  |  {2}", board[7], board[8], board[9]);
+            Console.WriteLine("  {0}  |  {1}  |  {2}", board[6], board[7], board[8]);
             Console.WriteLine("     |     |      ");
         }
 
         private static int CheckWin(char[] board)
         {
-            #region Horzontal Winning Condtion
             //Winning Condition For First Row   
-            if (board[1] == board[2] && board[2] == board[3])
+            if (board[0] == board[1] && board[1] == board[2])
             {
                 return 1;
             }
 
             //Winning Condition For Second Row   
-            else if (board[4] == board[5] && board[5] == board[6])
+            else if (board[3] == board[4] && board[4] == board[5])
             {
                 return 1;
             }
 
             //Winning Condition For Third Row   
-            else if (board[6] == board[7] && board[7] == board[8])
+            else if (board[5] == board[6] && board[6] == board[7])
             {
                 return 1;
             }
 
-            #endregion
-
-            #region vertical Winning Condtion
 
             //Winning Condition For First Column       
-            else if (board[1] == board[4] && board[4] == board[7])
+            else if (board[0] == board[3] && board[3] == board[6])
             {
                 return 1;
             }
 
             //Winning Condition For Second Column  
-            else if (board[2] == board[5] && board[5] == board[8])
+            else if (board[1] == board[4] && board[4] == board[7])
             {
                 return 1;
             }
 
             //Winning Condition For Third Column  
-            else if (board[3] == board[6] && board[6] == board[9])
+            else if (board[2] == board[5] && board[5] == board[8])
             {
                 return 1;
             }
 
-            #endregion
-
-            #region Diagonal Winning Condition
-            else if (board[1] == board[5] && board[5] == board[9])
+            else if (board[0] == board[4] && board[4] == board[8])
             {
                 return 1;
             }
 
-            else if (board[3] == board[5] && board[5] == board[7])
+            else if (board[2] == board[4] && board[4] == board[6])
             {
                 return 1;
             }
-
-            #endregion
-
-            #region Checking For Draw
 
             // If all the cells or values filled with X or O then any player has won the match  
-            else if (board[1] != '1' && board[2] != '2' && board[3] != '3' && board[4] != '4' && board[5] != '5' && board[6] != '6' && board[7] != '7' && board[8] != '8' && board[9] != '9')
+            else if (board[0] != '1' && board[1] != '2' && board[2] != '3' && board[3] != '4' && board[4] != '5' && board[5] != '6' && board[6] != '7' && board[7] != '8' && board[8] != '9')
             {
                 return -1;
             }
-
-            #endregion
 
             return 0;
         }
