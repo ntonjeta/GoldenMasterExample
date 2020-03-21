@@ -14,19 +14,18 @@ namespace Tris
         {
             char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             int actualPlayer = 1;
-            int choice;
 
             while (CheckWin(board) == 0)
             {
                 PrintPlayerChoise(actualPlayer);
                 PrintBoard(board);
-                choice = ReadPlayerChoise();
+                var choice = ReadPlayerChoise();
                 if (isBoardCellAlreadyTaken(board, choice))
                 {
                     PrintCellIsAlreadyMarketMessage(board, choice);
                     continue;
                 }
-                board[choice] = MarkCellOnBoard(actualPlayer);
+                board[choice] = GetPlayerMarker(actualPlayer);
                 actualPlayer = UpdatePlayer(actualPlayer);
             }
 
@@ -48,7 +47,7 @@ namespace Tris
             return CheckWin(board) == 1;
         }
 
-        private static char MarkCellOnBoard(int actualPlayer)
+        private static char GetPlayerMarker(int actualPlayer)
         {
             return (actualPlayer == Player2) ? Player2Mark : Player1Mark;
         }
