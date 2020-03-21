@@ -69,10 +69,9 @@ namespace Tris
             Console.ReadLine();
         }
 
-        private static int UpdatePlayer(int actualPlayer)
+        private static int UpdatePlayer(int player)
         {
-            actualPlayer = (actualPlayer + 1) % 2;
-            return actualPlayer;
+            return (player + 1) % 2;
         }
 
         private static bool isBoardCellAlreadyTaken(char[] board, int choice)
