@@ -14,7 +14,6 @@ namespace Tris
             char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             int actualPlayer = 1;
             int choice;
-            int flag = 0;
 
             do
             {
@@ -27,23 +26,19 @@ namespace Tris
                     continue;
                 }
                 board[choice] = MarkCellOnBoard(actualPlayer);
-
                 actualPlayer = UpdatePlayer(actualPlayer);
-
-                flag = CheckWin(board);
-
-            } while (flag != 1 && flag != -1);// This loof will be run until all cell of the grid is not marked with X and O or some player is not win  
+            } while (CheckWin(board) == 0);
 
             Console.Clear();
 
             PrintBoard(board);
 
-            if (flag == 1)// if flag value is 1 then some one has win or means who played marked last time which has win  
+            if (CheckWin(board) == 1)// 1 actualPlayer wins!
             {
                 Console.WriteLine("Player {0} has won", (actualPlayer % 2) + 1);
             }
 
-            else// if flag value is -1 the match will be draw and no one is winner  
+            else // -1 Draw.
             {
                 Console.WriteLine("Draw");
             }
@@ -169,10 +164,7 @@ namespace Tris
 
             #endregion
 
-            else
-            {
-                return 0;
-            }
+            return 0;
         }
     }
 }
