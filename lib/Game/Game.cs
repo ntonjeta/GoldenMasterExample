@@ -44,14 +44,8 @@ namespace Tris
                     continue;
                 }
 
-                if (actualPlayer % 2 == Player2)
-                {
-                    board[choice] = Player2Mark;
-                }
-                else
-                {
-                    board[choice] = Player1Mark;
-                }
+                board[choice] = (actualPlayer % 2 == Player2) ? Player2Mark : Player1Mark;
+
                 actualPlayer = UpdatePlayer(actualPlayer);
 
                 flag = CheckWin(board);
