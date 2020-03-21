@@ -16,7 +16,7 @@ namespace Tris
             int actualPlayer = 1;
             int choice;
 
-            do
+            while (CheckWin(board) == 0)
             {
                 PrintPlayerChoise(actualPlayer);
                 PrintBoard(board);
@@ -28,7 +28,7 @@ namespace Tris
                 }
                 board[choice] = MarkCellOnBoard(actualPlayer);
                 actualPlayer = UpdatePlayer(actualPlayer);
-            } while (CheckWin(board) == 0);
+            }
 
             PrintResult(board, actualPlayer);
         }
