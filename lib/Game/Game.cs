@@ -5,14 +5,12 @@ namespace Tris
 {
     public class Game
     {
-        static int choice; //This holds the choice at which position user want to mark   
-        // The flag veriable checks who has won if it's value is 1 then some one has won the match if -1 then Match has Draw if 0 then match is still running  
-        static int flag = 0;
-
         public static void run()
         {
             char[] arr = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             int player = 1;
+            int choice;
+            int flag = 0;
 
             do
             {
