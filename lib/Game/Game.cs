@@ -7,7 +7,7 @@ namespace Tris
     {
         public static void run()
         {
-            char[] arr = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             int player = 1;
             int choice;
             int flag = 0;
@@ -27,36 +27,36 @@ namespace Tris
                 }
 
                 Console.WriteLine("\n");
-                Board(arr);// calling the board Function  
+                Board(board);// calling the board Function  
                 choice = int.Parse(Console.ReadLine());//Taking users choice   
 
                 // checking that position where user want to run is marked (with X or O) or not  
-                if (arr[choice] != 'X' && arr[choice] != 'O')
+                if (board[choice] != 'X' && board[choice] != 'O')
                 {
                     if (player % 2 == 0) //if chance is of player 2 then mark O else mark X  
                     {
-                        arr[choice] = 'O';
+                        board[choice] = 'O';
                         player++;
                     }
                     else
                     {
-                        arr[choice] = 'X';
+                        board[choice] = 'X';
                         player++;
                     }
                 }
                 else //If there is any possition where user want to run and that is already marked then show message and load board again  
                 {
-                    Console.WriteLine("Sorry the row {0} is already marked with {1}", choice, arr[choice]);
+                    Console.WriteLine("Sorry the row {0} is already marked with {1}", choice, board[choice]);
                     Console.WriteLine("\n");
                     Console.WriteLine("Please wait 2 second board is loading again.....");
                     Thread.Sleep(2000);
                 }
-                flag = CheckWin(arr);// calling of check win  
+                flag = CheckWin(board);// calling of check win  
             } while (flag != 1 && flag != -1);// This loof will be run until all cell of the grid is not marked with X and O or some player is not win  
 
             Console.Clear();// clearing the console  
 
-            Board(arr);// getting filled board again  
+            Board(board);// getting filled board again  
 
             if (flag == 1)// if flag value is 1 then some one has win or means who played marked last time which has win  
             {
