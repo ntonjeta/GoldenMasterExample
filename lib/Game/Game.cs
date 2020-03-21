@@ -27,7 +27,8 @@ namespace Tris
                 }
 
                 Console.WriteLine("\n");
-                Board(board);// calling the board Function  
+                PrintBoard(board);// calling the board Function  
+
                 choice = int.Parse(Console.ReadLine());//Taking users choice   
 
                 // checking that position where user want to run is marked (with X or O) or not  
@@ -56,7 +57,7 @@ namespace Tris
 
             Console.Clear();// clearing the console  
 
-            Board(board);// getting filled board again  
+            PrintBoard(board);// getting filled board again  
 
             if (flag == 1)// if flag value is 1 then some one has win or means who played marked last time which has win  
             {
@@ -72,7 +73,7 @@ namespace Tris
         }
 
         // Board method which creats board  
-        private static void Board(char[] arr)
+        private static void PrintBoard(char[] arr)
         {
             Console.WriteLine("     |     |      ");
             Console.WriteLine("  {0}  |  {1}  |  {2}", arr[1], arr[2], arr[3]);
