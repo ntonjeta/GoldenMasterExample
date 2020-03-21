@@ -18,7 +18,7 @@ namespace Tris
 
             do
             {
-                Console.Clear();// whenever loop will be again start then screen will be clear  
+                Console.Clear();
                 Console.WriteLine("Player1:X and Player2:O");
                 Console.WriteLine("\n");
                 if (actualPlayer == Player2)
@@ -44,24 +44,24 @@ namespace Tris
                     continue;
                 }
 
-                if (actualPlayer % 2 == Player2) 
+                if (actualPlayer % 2 == Player2)
                 {
                     board[choice] = Player2Mark;
-                    actualPlayer = (actualPlayer + 1) % 2;
+                    actualPlayer = UpdatePlayer(actualPlayer);
                 }
                 else
                 {
                     board[choice] = Player1Mark;
-                    actualPlayer = (actualPlayer + 1) % 2;
+                    actualPlayer = UpdatePlayer(actualPlayer);
                 }
 
-                flag = CheckWin(board);// calling of check win  
+                flag = CheckWin(board);
 
             } while (flag != 1 && flag != -1);// This loof will be run until all cell of the grid is not marked with X and O or some player is not win  
 
-            Console.Clear();// clearing the console  
+            Console.Clear();
 
-            PrintBoard(board);// getting filled board again  
+            PrintBoard(board);
 
             if (flag == 1)// if flag value is 1 then some one has win or means who played marked last time which has win  
             {
@@ -76,12 +76,17 @@ namespace Tris
             Console.ReadLine();
         }
 
+        private static int UpdatePlayer(int actualPlayer)
+        {
+            actualPlayer = (actualPlayer + 1) % 2;
+            return actualPlayer;
+        }
+
         private static bool isBoardCellAlreadyTaken(char[] board, int choice)
         {
             return board[choice] == Player1Mark || board[choice] == Player2Mark;
         }
 
-        // Board method which creats board  
         private static void PrintBoard(char[] board)
         {
             Console.WriteLine("     |     |      ");
