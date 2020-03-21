@@ -30,9 +30,14 @@ namespace Tris
                 actualPlayer = UpdatePlayer(actualPlayer);
             } while (CheckWin(board) == 0);
 
+            PrintResult(board, actualPlayer);
+        }
+
+        private static void PrintResult(char[] board, int actualPlayer)
+        {
             Console.Clear();
             PrintBoard(board);
-            Console.WriteLine( (ActualPlayerWin(board)) 
+            Console.WriteLine((ActualPlayerWin(board))
                     ? string.Format("Player {0} has won", (actualPlayer % NumberOfPlayer) + 1)
                     : "Draw");
             Console.ReadLine();
