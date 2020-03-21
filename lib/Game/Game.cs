@@ -8,6 +8,7 @@ namespace Tris
         private const char Player2Mark = 'O';
         private const char Player1Mark = 'X';
         private const int Player2 = 0;
+        private const int NumberOfPlayer = 2;
 
         public static void run()
         {
@@ -32,7 +33,7 @@ namespace Tris
             Console.Clear();
             PrintBoard(board);
             Console.WriteLine( (ActualPlayerWin(board)) 
-                    ? string.Format("Player {0} has won", (actualPlayer % 2) + 1)
+                    ? string.Format("Player {0} has won", (actualPlayer % NumberOfPlayer) + 1)
                     : "Draw");
             Console.ReadLine();
         }
@@ -71,7 +72,7 @@ namespace Tris
 
         private static int UpdatePlayer(int player)
         {
-            return (player + 1) % 2;
+            return (player + 1) % NumberOfPlayer;
         }
 
         private static bool isBoardCellAlreadyTaken(char[] board, int choice)
