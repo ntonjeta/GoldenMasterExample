@@ -63,14 +63,7 @@ namespace Tris
             Console.Clear();
             Console.WriteLine("Player1:X and Player2:O");
             Console.WriteLine("\n");
-            if (actualPlayer == Player2)
-            {
-                Console.WriteLine("Player 2 Chance");
-            }
-            else
-            {
-                Console.WriteLine("Player 1 Chance");
-            }
+            Console.WriteLine((actualPlayer == Player2) ? "Player 2 Chance" : "Player 1 Chance");
             Console.WriteLine("\n");
         }
 
