@@ -20,7 +20,7 @@ namespace Tris
                 PrintPlayerChoise(actualPlayer);
                 PrintBoard(board);
                 var choice = ReadPlayerChoise();
-                if (isBoardCellAlreadyTaken(board, choice))
+                if (isBoardCellAlreadyTaken(board[choice]))
                 {
                     PrintCellIsAlreadyMarketMessage(board, choice);
                     continue;
@@ -79,9 +79,9 @@ namespace Tris
             return (player + 1) % NumberOfPlayer;
         }
 
-        private static bool isBoardCellAlreadyTaken(char[] board, int choice)
+        private static bool isBoardCellAlreadyTaken(char cellValue)
         {
-            return board[choice] == Player1Mark || board[choice] == Player2Mark;
+            return cellValue == Player1Mark || cellValue == Player2Mark;
         }
 
         private static void PrintBoard(char[] board)
