@@ -18,19 +18,8 @@ namespace Tris
 
             do
             {
-                Console.Clear();
-                Console.WriteLine("Player1:X and Player2:O");
-                Console.WriteLine("\n");
-                if (actualPlayer == Player2)
-                {
-                    Console.WriteLine("Player 2 Chance");
-                }
-                else
-                {
-                    Console.WriteLine("Player 1 Chance");
-                }
+                PrintPlayerChoise(actualPlayer);
 
-                Console.WriteLine("\n");
                 PrintBoard(board);
 
                 choice = int.Parse(Console.ReadLine());//Taking users choice   
@@ -67,6 +56,22 @@ namespace Tris
             }
 
             Console.ReadLine();
+        }
+
+        private static void PrintPlayerChoise(int actualPlayer)
+        {
+            Console.Clear();
+            Console.WriteLine("Player1:X and Player2:O");
+            Console.WriteLine("\n");
+            if (actualPlayer == Player2)
+            {
+                Console.WriteLine("Player 2 Chance");
+            }
+            else
+            {
+                Console.WriteLine("Player 1 Chance");
+            }
+            Console.WriteLine("\n");
         }
 
         private static int UpdatePlayer(int player)
