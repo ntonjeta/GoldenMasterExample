@@ -34,7 +34,14 @@ namespace Tris
 
                 choice = int.Parse(Console.ReadLine());//Taking users choice   
 
-                if (! isBoardCellAlreadyTaken(board, choice))
+                if (isBoardCellAlreadyTaken(board, choice))
+                {
+                    Console.WriteLine("Sorry the row {0} is already marked with {1}", choice, board[choice]);
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Please wait 2 second board is loading again.....");
+                    Thread.Sleep(2000);
+                }
+                else 
                 {
                     if (player % 2 == 0) //if chance is of player 2 then mark O else mark X  
                     {
@@ -46,13 +53,6 @@ namespace Tris
                         board[choice] = Player1Mark;
                         player = (player + 1) % 2;
                     }
-                }
-                else //If there is any possition where user want to run and that is already marked then show message and load board again  
-                {
-                    Console.WriteLine("Sorry the row {0} is already marked with {1}", choice, board[choice]);
-                    Console.WriteLine("\n");
-                    Console.WriteLine("Please wait 2 second board is loading again.....");
-                    Thread.Sleep(2000);
                 }
                 flag = CheckWin(board);// calling of check win  
             } while (flag != 1 && flag != -1);// This loof will be run until all cell of the grid is not marked with X and O or some player is not win  
