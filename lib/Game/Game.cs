@@ -22,7 +22,7 @@ namespace Tris
                 var choice = ReadPlayerChoise();
                 if (isBoardCellAlreadyTaken(board[choice]))
                 {
-                    PrintCellIsAlreadyMarketMessage(board, choice);
+                    PrintCellIsAlreadyMarketMessage(board[choice], choice);
                     continue;
                 }
                 board[choice] = GetPlayerMarker(actualPlayer);
@@ -52,9 +52,9 @@ namespace Tris
             return (actualPlayer == Player2) ? Player2Mark : Player1Mark;
         }
 
-        private static void PrintCellIsAlreadyMarketMessage(char[] board, int choice)
+        private static void PrintCellIsAlreadyMarketMessage(char cellValue, int row)
         {
-            Console.WriteLine("Sorry the row {0} is already marked with {1}", choice, board[choice]);
+            Console.WriteLine("Sorry the row {0} is already marked with {1}", row, cellValue);
             Console.WriteLine("\n");
             Console.WriteLine("Please wait 2 second board is loading again.....");
             Thread.Sleep(2000);
