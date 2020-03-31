@@ -4,6 +4,10 @@ namespace Tris
 {
     public class Board
     {
+        private const char PlayerOneMark = 'X';
+        private const char PlayerTwoMark = 'O';
+        private const int PlayerOneId = 1;
+        private const int PlayerTwoId = 0;
         private const int IntToAsciiOfSet = 48;
 
         private int boardsize;
@@ -23,7 +27,7 @@ namespace Tris
             {
                 for (int j = 0; j < boardsize; j++)
                 {
-                    board[i, j] = (char) (count + IntToAsciiOfSet);
+                    board[i, j] = (char)(count + IntToAsciiOfSet);
                     count++;
                 }
             }
@@ -34,9 +38,16 @@ namespace Tris
             return board;
         }
 
-        public byte UpdateBoard(int v1, int v2)
+        public void UpdateBoard(int player, int choice)
         {
-            throw new NotImplementedException();
+            var row = (choice -1) / 3;
+            var col = (choice -1) % 3;
+            board[row, col] = GetPlayerMarker(player);
+        }
+
+        private static char GetPlayerMarker(int actualPlayer)
+        {
+            return (actualPlayer == PlayerTwoId) ? PlayerTwoMark : PlayerOneMark;
         }
     }
 }
