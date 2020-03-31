@@ -7,14 +7,16 @@ namespace GoldenMasterExampleTest
     {
         private const int Boardsize = 3;
         private const int PlayerOne = 1;
+        private const int PlayerTwo = 0;
         private const int FirstChoice = 1;
+        private const int SecondChoice = 2;
         private readonly char[,] InitialBoard = new char[Boardsize, Boardsize]{
                 { '1', '2', '3' },
                 { '4', '5', '6' },
                 { '7', '8', '9' }
             };
         private readonly char[,] UpdatedBoard = new char[Boardsize, Boardsize]{
-                { 'X' , '2', '3'},
+                { 'X' , 'O', '3'},
                 { '4', '5', '6' },
                 { '7', '8', '9'}
             };
@@ -37,6 +39,7 @@ namespace GoldenMasterExampleTest
         public void UpdateBoard()
         {
             _board.UpdateBoard(PlayerOne, FirstChoice);
+            _board.UpdateBoard(PlayerTwo, SecondChoice);
 
             Assert.AreEqual(UpdatedBoard, _board.GetBoard());
         }
