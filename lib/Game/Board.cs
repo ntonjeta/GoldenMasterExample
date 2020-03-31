@@ -4,8 +4,10 @@ namespace Tris
 {
     public class Board
     {
+        private const int IntToAsciiOfSet = 48;
+
         private int boardsize;
-        public byte[,] board { get; private set; }
+        public char[,] board { get; private set; }
 
         public Board(int boardsize)
         {
@@ -15,21 +17,26 @@ namespace Tris
 
         private void InitializeBoard(int boardsize)
         {
-            board = new byte[boardsize, boardsize];
+            board = new char[boardsize, boardsize];
             int count = 1;
             for (int i = 0; i < boardsize; i++)
             {
                 for (int j = 0; j < boardsize; j++)
                 {
-                    board[i, j] = (byte)count;
+                    board[i, j] = (char) (count + IntToAsciiOfSet);
                     count++;
                 }
             }
         }
 
-        public byte[,] GetBoard()
+        public char[,] GetBoard()
         {
             return board;
+        }
+
+        public byte UpdateBoard(int v1, int v2)
+        {
+            throw new NotImplementedException();
         }
     }
 }
