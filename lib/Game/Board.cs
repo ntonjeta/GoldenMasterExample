@@ -4,12 +4,28 @@ namespace Tris
 {
     public class Board
     {
-        private const int PlayerTwoId = 0;
-        private const int PlayerOneId = 1;
+        private int boardsize;
+        public byte[,] board { get; private set; }
 
-        public double GetBoard()
+        public Board(int boardsize)
         {
-            throw new NotImplementedException();
+            this.boardsize = boardsize;
+            board = new byte[boardsize, boardsize];
+            int count = 1;
+            for (int i = 0; i < boardsize; i++)
+            {
+                for (int j = 0; j < boardsize; j++)
+                {
+                    board[i, j] = (byte)count;
+                    count++;
+                }
+            }
+        }
+
+
+        public byte[,] GetBoard()
+        {
+            return board;
         }
     }
 }
