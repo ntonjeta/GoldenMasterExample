@@ -10,24 +10,24 @@ namespace Tris
         private const int PlayerTwoId = 0;
         private const int IntToAsciiOfSet = 48;
 
-        private int boardsize;
-        public char[,] board { get; private set; }
+        private int BoardSize;
+        public char[,] result { get; private set; }
 
         public Board(int boardsize)
         {
-            this.boardsize = boardsize;
+            this.BoardSize = boardsize;
             InitializeBoard(boardsize);
         }
 
         private void InitializeBoard(int boardsize)
         {
-            board = new char[boardsize, boardsize];
+            result = new char[boardsize, boardsize];
             int count = 1;
             for (int i = 0; i < boardsize; i++)
             {
                 for (int j = 0; j < boardsize; j++)
                 {
-                    board[i, j] = (char)(count + IntToAsciiOfSet);
+                    result[i, j] = (char)(count + IntToAsciiOfSet);
                     count++;
                 }
             }
@@ -35,14 +35,14 @@ namespace Tris
 
         public char[,] GetBoard()
         {
-            return board;
+            return result;
         }
 
         public void UpdateBoard(int player, int choice)
         {
-            var row = (choice -1) / 3;
-            var col = (choice -1) % 3;
-            board[row, col] = GetPlayerMarker(player);
+            var row = (choice -1) / BoardSize;
+            var col = (choice -1) % BoardSize;
+            result[row, col] = GetPlayerMarker(player);
         }
 
         private static char GetPlayerMarker(int actualPlayer)
