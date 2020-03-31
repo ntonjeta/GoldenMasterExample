@@ -10,6 +10,11 @@ namespace Tris
         public Board(int boardsize)
         {
             this.boardsize = boardsize;
+            InitializeBoard(boardsize);
+        }
+
+        private void InitializeBoard(int boardsize)
+        {
             board = new byte[boardsize, boardsize];
             int count = 1;
             for (int i = 0; i < boardsize; i++)
@@ -21,7 +26,6 @@ namespace Tris
                 }
             }
         }
-
 
         public byte[,] GetBoard()
         {
