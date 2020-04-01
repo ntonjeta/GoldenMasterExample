@@ -124,9 +124,8 @@ namespace Tris
                     if (_board[i, j] != PlayerOneMark && _board[i, j] != PlayerTwoMark)
                         return false;
                 }
-                return true;
             }
-            return false;
+            return true;
         }
 
         private bool CheckDiagonalWinning()
