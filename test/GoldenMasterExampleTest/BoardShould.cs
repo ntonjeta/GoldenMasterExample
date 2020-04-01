@@ -15,7 +15,12 @@ namespace GoldenMasterExampleTest
                 { '4', '5', '6' },
                 { '7', '8', '9' }
             };
-        private readonly char[,] UpdatedBoard = new char[Boardsize, Boardsize]{
+        private readonly char[,] OneChangeBoard = new char[Boardsize, Boardsize]{
+                { 'X' , '2', '3'},
+                { '4', '5', '6' },
+                { '7', '8', '9'}
+            };
+        private readonly char[,] TwoChangeBoard = new char[Boardsize, Boardsize]{
                 { 'X' , 'O', '3'},
                 { '4', '5', '6' },
                 { '7', '8', '9'}
@@ -38,10 +43,18 @@ namespace GoldenMasterExampleTest
         [Test]
         public void UpdateBoard()
         {
-            _board.UpdateBoard(PlayerOne, FirstChoice);
-            _board.UpdateBoard(PlayerTwo, SecondChoice);
+            Assert.True(_board.UpdateBoard(PlayerOne, FirstChoice));
+            Assert.True(_board.UpdateBoard(PlayerTwo, SecondChoice));
+            Assert.AreEqual(TwoChangeBoard, _board.GetBoard());
+        }
 
-            Assert.AreEqual(UpdatedBoard, _board.GetBoard());
+        [Test]
+        public void ReturnErrorWhenUpdateAlreadyTakenCell()
+        {
+            Assert.True(_board.UpdateBoard(PlayerOne, FirstChoice));
+
+            Assert.False(_board.UpdateBoard(PlayerTwo, FirstChoice));
+            Assert.AreEqual(OneChangeBoard, _board.GetBoard());
         }
     }
 }

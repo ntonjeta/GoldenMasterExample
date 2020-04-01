@@ -11,7 +11,7 @@ namespace Tris
         private const int IntToAsciiOfSet = 48;
 
         private int BoardSize;
-        public char[,] result { get; private set; }
+        private char[,] _board { get; set; }
 
         public Board(int boardsize)
         {
@@ -21,13 +21,13 @@ namespace Tris
 
         private void InitializeBoard(int boardsize)
         {
-            result = new char[boardsize, boardsize];
+            _board = new char[boardsize, boardsize];
             int count = 1;
             for (int i = 0; i < boardsize; i++)
             {
                 for (int j = 0; j < boardsize; j++)
                 {
-                    result[i, j] = (char)(count + IntToAsciiOfSet);
+                    _board[i, j] = (char)(count + IntToAsciiOfSet);
                     count++;
                 }
             }
@@ -35,14 +35,23 @@ namespace Tris
 
         public char[,] GetBoard()
         {
-            return result;
+            return _board;
         }
 
-        public void UpdateBoard(int player, int choice)
+        public bool UpdateBoard(int player, int choice)
         {
             var row = (choice -1) / BoardSize;
             var col = (choice -1) % BoardSize;
-            result[row, col] = GetPlayerMarker(player);
+            if (isCellAlreadyTaken(row,col))
+                return false;
+            _board[row, col] = GetPlayerMarker(player);
+            return true;
+        }
+
+        private bool isCellAlreadyTaken(int row, int col)
+        {
+            var cellValue = _board[row, col];
+            return  cellValue == PlayerOneMark || cellValue == PlayerTwoMark;
         }
 
         private static char GetPlayerMarker(int actualPlayer)
