@@ -111,7 +111,22 @@ namespace Tris
             if (CheckVerticalWinning()) return 1;
             if (CheckOrizontalWinning()) return 1;
             if (CheckDiagonalWinning()) return 1;
+            if (CheckDraw()) return 0;
             return -1;
+        }
+
+        private bool CheckDraw()
+        {
+            for (int i = 0; i < BoardSize; i++)
+            {
+                for (int j = 0; j < BoardSize; j++)
+                {
+                    if (_board[i, j] != PlayerOneMark && _board[i, j] != PlayerTwoMark)
+                        return false;
+                }
+                return true;
+            }
+            return false;
         }
 
         private bool CheckDiagonalWinning()

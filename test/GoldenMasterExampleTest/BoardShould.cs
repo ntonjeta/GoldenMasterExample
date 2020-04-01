@@ -22,6 +22,8 @@ namespace GoldenMasterExampleTest
         private const int ThirdChoice = 3;
         private const int NinthChoice = 9;
         private const int NotWin = -1;
+        private const int SixthChoice = 6;
+        private const int Draw = 0;
         private readonly char[,] InitialBoard = new char[BoardSize, BoardSize]{
                 { '1', '2', '3' },
                 { '4', '5', '6' },
@@ -146,6 +148,23 @@ namespace GoldenMasterExampleTest
             _board.UpdateBoard(PlayerOne, FirstChoice);
 
             Assert.AreEqual(NotWin, _board.CheckWin());
+        }
+
+        [Test]
+        public void CheckDrawCondition()
+        {
+            _board.UpdateBoard(PlayerOne, FirstChoice);
+            _board.UpdateBoard(PlayerOne, ThirdChoice);
+            _board.UpdateBoard(PlayerOne, SixthChoice);
+            _board.UpdateBoard(PlayerOne, EighthChoice);
+
+            _board.UpdateBoard(PlayerTwo, SecondChoice);
+            _board.UpdateBoard(PlayerTwo, FourtChoice);
+            _board.UpdateBoard(PlayerTwo, FivethChoice);
+            _board.UpdateBoard(PlayerTwo, SeventhChoice);
+            _board.UpdateBoard(PlayerTwo, NinthChoice);
+
+            Assert.AreEqual(Draw, _board.CheckWin());
         }
     }
 }
