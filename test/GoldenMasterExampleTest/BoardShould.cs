@@ -72,23 +72,6 @@ namespace GoldenMasterExampleTest
         {
             var expectedBoard =
             "     |     |     \n" +
-            "  1  |  2  |  3  \n" +
-            "_____|_____|_____\n" +
-            "     |     |     \n" +
-            "  4  |  5  |  6  \n" +
-            "_____|_____|_____\n " +
-            "     |     |     \n" +
-            "  7  |  8  |  9  \n" +
-            "     |     |     \n";
-
-            Assert.AreEqual(expectedBoard, _board.Print());
-        }
-
-        [Test]
-        public void PrintBoardAftterUpdate()
-        {
-            var expectedBoard =
-            "     |     |     \n" +
             "  X  |  2  |  3  \n" +
             "_____|_____|_____\n" +
             "     |     |     \n" +
