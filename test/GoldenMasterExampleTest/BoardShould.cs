@@ -15,6 +15,11 @@ namespace GoldenMasterExampleTest
         private const char PlayerOneMark = 'X';
         private const int LargestBoardSize = 4;
         private const int Win = 1;
+        private const int FourtChoice = 4;
+        private const int SeventhChoice = 7;
+        private const int FivethChoice = 5;
+        private const int EighthChoice = 8;
+        private const int ThirdChoice = 3;
         private readonly char[,] InitialBoard = new char[BoardSize, BoardSize]{
                 { '1', '2', '3' },
                 { '4', '5', '6' },
@@ -93,15 +98,15 @@ namespace GoldenMasterExampleTest
         public void CheckVerticalWinningCondition()
         {
             _board.UpdateBoard(PlayerOne,FirstChoice);
-            _board.UpdateBoard(PlayerOne,4);
-            _board.UpdateBoard(PlayerOne,7);
+            _board.UpdateBoard(PlayerOne, FourtChoice);
+            _board.UpdateBoard(PlayerOne, SeventhChoice);
 
             Assert.AreEqual(Win, _board.CheckWin());
 
             _board = new Board(BoardSize);
-            _board.UpdateBoard(PlayerOne,2);
-            _board.UpdateBoard(PlayerOne,5);
-            _board.UpdateBoard(PlayerOne,8);
+            _board.UpdateBoard(PlayerOne,SecondChoice);
+            _board.UpdateBoard(PlayerOne, FivethChoice);
+            _board.UpdateBoard(PlayerOne, EighthChoice);
 
             Assert.AreEqual(Win, _board.CheckWin());
         }
@@ -111,7 +116,7 @@ namespace GoldenMasterExampleTest
         {
             _board.UpdateBoard(PlayerOne,FirstChoice);
             _board.UpdateBoard(PlayerOne,SecondChoice);
-            _board.UpdateBoard(PlayerOne,3);
+            _board.UpdateBoard(PlayerOne, ThirdChoice);
 
             Assert.AreEqual(Win, _board.CheckWin());
         }

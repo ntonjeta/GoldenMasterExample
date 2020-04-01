@@ -108,7 +108,13 @@ namespace Tris
 
         public int CheckWin()
         {
-            // Vertial winning condition
+            if (CheckVerticalWinning()) return 1;
+            if(CheckOrizontalWinning()) return 1;
+            return -1;
+        }
+
+        private bool CheckVerticalWinning()
+        {
             for (int col = 0; col < BoardSize; col++)
             {
                 var result = 1;
@@ -118,9 +124,13 @@ namespace Tris
                     if (_board[row, col] != value) result = -1;
                 }
                 if (result == 1)
-                    return 1;
+                    return true;
             }
-            // Orizontal winning condition
+            return false;
+        }
+
+        private bool CheckOrizontalWinning()
+        {
             for (int row = 0; row < BoardSize; row++)
             {
                 var result = 1;
@@ -130,9 +140,9 @@ namespace Tris
                     if (_board[row, col] != value) result = -1;
                 }
                 if (result == 1)
-                    return 1;
+                    return true;
             }
-            return -1;
+            return false;
         }
     }
 }
