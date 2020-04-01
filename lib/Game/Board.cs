@@ -111,11 +111,26 @@ namespace Tris
             // Vertial winning condition
             for (int col = 0; col < BoardSize; col++)
             {
+                var result = 1;
                 var value = _board[0, col];
                 for (int row = 1; row < BoardSize; row++)
                 {
-                    if (_board[row, col] != value) return 1;
+                    if (_board[row, col] != value) result = -1;
                 }
+                if (result == 1)
+                    return 1;
+            }
+            // Orizontal winning condition
+            for (int row = 0; row < BoardSize; row++)
+            {
+                var result = 1;
+                var value = _board[row, 0];
+                for (int col = 1; col < BoardSize; col++)
+                {
+                    if (_board[row, col] != value) result = -1;
+                }
+                if (result == 1)
+                    return 1;
             }
             return -1;
         }

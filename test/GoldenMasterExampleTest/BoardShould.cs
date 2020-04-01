@@ -105,6 +105,15 @@ namespace GoldenMasterExampleTest
 
             Assert.AreEqual(Win, _board.CheckWin());
         }
-    }
 
+        [Test]
+        public void CheckOrizontalWinningCondition()
+        {
+            _board.UpdateBoard(PlayerOne,FirstChoice);
+            _board.UpdateBoard(PlayerOne,SecondChoice);
+            _board.UpdateBoard(PlayerOne,3);
+
+            Assert.AreEqual(Win, _board.CheckWin());
+        }
+    }
 }
