@@ -61,6 +61,8 @@ namespace GoldenMasterExampleTest
         public void ReturnCellValueForChoice()
         {
             Assert.AreEqual('-', _board.GetCellValue(FirstChoice));
+            Assert.True(_board.UpdateBoard(PlayerOne,FirstChoice));
+            Assert.AreEqual('X',_board.GetCellValue(FirstChoice));
         }
     }
 }
