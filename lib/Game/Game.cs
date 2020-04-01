@@ -10,42 +10,42 @@ namespace Tris
         private const int Player2 = 0;
         private const int NumberOfPlayer = 2;
         private const int MatrixDimension = 3;
+        private const int Boardsize = 3;
 
         public static void run()
         {
-            char[] board = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            Board board = new Board(Boardsize);
             int actualPlayer = 1;
 
-            while (CheckWin(board) == 0)
+            while (board.CheckWin() == -1)
             {
                 PrintPlayerChoise(actualPlayer);
-                PrintBoard(board);
-                var choice = ReadPlayerChoise() - 1;
-                if (isBoardCellAlreadyTaken(board[choice]))
+                Console.WriteLine(board.Print());
+                var choice = ReadPlayerChoise();
+                if (!board.UpdateBoard(actualPlayer, choice))
                 {
-                    PrintCellIsAlreadyMarketMessage(board[choice], choice);
+                    PrintCellIsAlreadyMarketMessage(board.GetCellValue(choice), choice);
                     continue;
                 }
-                board[choice] = GetPlayerMarker(actualPlayer);
                 actualPlayer = UpdatePlayer(actualPlayer);
             }
 
             PrintResult(board, actualPlayer);
         }
 
-        private static void PrintResult(char[] board, int actualPlayer)
+        private static void PrintResult(Board board, int actualPlayer)
         {
             Console.Clear();
-            PrintBoard(board);
+            Console.WriteLine(board.Print());
             Console.WriteLine((ActualPlayerWin(board))
                     ? string.Format("Player {0} has won", (actualPlayer % NumberOfPlayer) + 1)
                     : "Draw");
             Console.ReadLine();
         }
 
-        private static bool ActualPlayerWin(char[] board)
+        private static bool ActualPlayerWin(Board board)
         {
-            return CheckWin(board) == 1;
+            return board.CheckWin() == 1;
         }
 
         private static char GetPlayerMarker(int actualPlayer)
