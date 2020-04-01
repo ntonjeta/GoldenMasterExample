@@ -91,7 +91,7 @@ namespace GoldenMasterExampleTest
                 "_____|_____|_____\n" +
                 "     |     |     \n" +
                 "  7  |  8  |  9  \n" +
-                "     |     |     \n";
+                "     |     |     ";
 
             _board.UpdateBoard(PlayerOne, FirstChoice);
 
