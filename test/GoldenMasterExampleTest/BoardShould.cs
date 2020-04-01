@@ -10,6 +10,8 @@ namespace GoldenMasterExampleTest
         private const int PlayerTwo = 0;
         private const int FirstChoice = 1;
         private const int SecondChoice = 2;
+        private const char NotMarkedCellValue = '-';
+        private const char PlayerOneMark = 'X';
         private readonly char[,] InitialBoard = new char[Boardsize, Boardsize]{
                 { '1', '2', '3' },
                 { '4', '5', '6' },
@@ -60,9 +62,9 @@ namespace GoldenMasterExampleTest
         [Test]
         public void ReturnCellValueForChoice()
         {
-            Assert.AreEqual('-', _board.GetCellValue(FirstChoice));
+            Assert.AreEqual(NotMarkedCellValue, _board.GetCellValue(FirstChoice));
             Assert.True(_board.UpdateBoard(PlayerOne,FirstChoice));
-            Assert.AreEqual('X',_board.GetCellValue(FirstChoice));
+            Assert.AreEqual(PlayerOneMark, _board.GetCellValue(FirstChoice));
         }
     }
 }

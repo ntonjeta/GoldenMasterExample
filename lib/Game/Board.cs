@@ -9,7 +9,7 @@ namespace Tris
         private const int PlayerOneId = 1;
         private const int PlayerTwoId = 0;
         private const int IntToAsciiOfSet = 48;
-
+        private const char NotMarkedCellValue = '-';
         private int BoardSize;
         private char[,] _board { get; set; }
 
@@ -44,7 +44,7 @@ namespace Tris
             var col = GetCol(choice);
 
             return (_board[row, col] != PlayerOneMark && _board[row, col] != PlayerTwoMark)
-            ? '-'
+            ? NotMarkedCellValue
             : _board[row, col];
         }
 
