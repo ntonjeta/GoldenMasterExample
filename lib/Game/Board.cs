@@ -59,6 +59,19 @@ namespace Tris
             _board[row, col] = GetPlayerMarker(player);
             return true;
         }
+        public string Print()
+        {
+            return
+             "     |     |     \n" +
+             "  1  |  2  |  3  \n" +
+             "_____|_____|_____\n" +
+             "     |     |     \n" +
+             "  4  |  5  |  6  \n" +
+             "_____|_____|_____\n " +
+             "     |     |     \n" +
+             "  7  |  8  |  9  \n" +
+             "     |     |     \n";
+        }
 
         private int GetCol(int choice)
         {

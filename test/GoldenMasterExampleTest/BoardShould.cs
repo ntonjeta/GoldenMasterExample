@@ -63,8 +63,25 @@ namespace GoldenMasterExampleTest
         public void ReturnCellValueForChoice()
         {
             Assert.AreEqual(NotMarkedCellValue, _board.GetCellValue(FirstChoice));
-            Assert.True(_board.UpdateBoard(PlayerOne,FirstChoice));
+            Assert.True(_board.UpdateBoard(PlayerOne, FirstChoice));
             Assert.AreEqual(PlayerOneMark, _board.GetCellValue(FirstChoice));
+        }
+
+        [Test]
+        public void PrintBoard()
+        {
+            var expectedBoard =
+            "     |     |     \n" +
+            "  1  |  2  |  3  \n" +
+            "_____|_____|_____\n" +
+            "     |     |     \n" +
+            "  4  |  5  |  6  \n" +
+            "_____|_____|_____\n " +
+            "     |     |     \n" +
+            "  7  |  8  |  9  \n" +
+            "     |     |     \n";
+
+            Assert.AreEqual(expectedBoard, _board.Print());
         }
     }
 }
