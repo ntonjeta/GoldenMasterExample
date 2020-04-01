@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Tris;
 
 namespace GoldenMasterExampleTest
@@ -12,6 +13,7 @@ namespace GoldenMasterExampleTest
         private const int SecondChoice = 2;
         private const char NotMarkedCellValue = '-';
         private const char PlayerOneMark = 'X';
+        private const int LargestBoardSize = 4;
         private readonly char[,] InitialBoard = new char[Boardsize, Boardsize]{
                 { '1', '2', '3' },
                 { '4', '5', '6' },
@@ -76,14 +78,14 @@ namespace GoldenMasterExampleTest
             "_____|_____|_____\n" +
             "     |     |     \n" +
             "  4  |  5  |  6  \n" +
-            "_____|_____|_____\n " +
+            "_____|_____|_____\n" +
             "     |     |     \n" +
             "  7  |  8  |  9  \n" +
             "     |     |     \n";
 
-            _board.UpdateBoard(PlayerOne,FirstChoice);
+            _board.UpdateBoard(PlayerOne, FirstChoice);
 
-            Assert.AreEqual(expectedBoard, _board.Print());
+            StringAssert.AreEqualIgnoringCase(expectedBoard, _board.Print());
         }
     }
 }

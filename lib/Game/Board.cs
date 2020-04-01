@@ -61,16 +61,28 @@ namespace Tris
         }
         public string Print()
         {
-            return
-             "     |     |     \n" +
-             "  " + _board[0, 0] + "  |  " + _board[0, 1] + "  |  " + _board[0, 2] + "  \n" +
-             "_____|_____|_____\n" +
-             "     |     |     \n" +
-             "  " + _board[1, 0] + "  |  " + _board[1, 1] + "  |  " + _board[1, 2] + "  \n" +
-             "_____|_____|_____\n " +
-             "     |     |     \n" +
-             "  " + _board[2, 0] + "  |  " + _board[2, 1] + "  |  " + _board[2, 2] + "  \n" +
-             "     |     |     \n";
+            string result = "";
+            for (int i = 0; i < BoardSize; i++)
+            {
+                result += PrintRow(i);
+            }
+            return result;
+        }
+
+        private string PrintRow(int row)
+        {
+            var emptyLine = "     |     |     \n";
+
+            var result =
+                emptyLine +
+                "  " + _board[row, 0] + "  |  " + _board[row, 1] + "  |  " + _board[row, 2] + "  \n";
+
+            result = 
+                (row != BoardSize - 1)
+                    ? result + "_____|_____|_____\n"
+                    : result + emptyLine;
+
+            return result;
         }
 
         private int GetCol(int choice)
