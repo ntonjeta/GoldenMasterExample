@@ -27,7 +27,7 @@ namespace Tris
             {
                 for (int j = 0; j < boardsize; j++)
                 {
-                    _board[i, j] = (char)(count + IntToAsciiOfSet);
+                    _board[i, j] = (char)count; 
                     count++;
                 }
             }
@@ -69,20 +69,65 @@ namespace Tris
             return result;
         }
 
-        private string PrintRow(int row)
+        private string PrintRow(int rowIndex)
         {
-            var emptyLine = "     |     |      \n";
+            string emptyLine = BuildEmptyLine();
+            string breakLine = BuildBreakLine();
 
-            var result =
-                emptyLine +
-                "  " + _board[row, 0] + "  |  " + _board[row, 1] + "  |  " + _board[row, 2] + "\n";
+            var row = emptyLine;
+            row += BuildValueLine(rowIndex);
+            row += (rowIndex != BoardSize - 1)
+                ? breakLine
+                : emptyLine;
 
-            result =
-                (row != BoardSize - 1)
-                    ? result + "_____|_____|_____ \n"
-                    : result + "     |     |      ";
+            return row;
+        }
 
-            return result;
+        private string BuildValueLine(int rowIndex)
+        {
+            var result = "";
+            for (int i = 0; i < BoardSize; i++)
+            {
+                result += "  " + GetBoardMarker(rowIndex, i) + "  ";
+                result += (i == BoardSize - 1) ? "" : "|";
+            }
+            return result + "\n";
+        }
+
+        private string GetBoardMarker(int row, int col)
+        {
+            switch (_board[row,col]){
+                case PlayerOneMark:
+                return PlayerOneMark.ToString();
+                case PlayerTwoMark:
+                return PlayerTwoMark.ToString();
+                default:
+                 return((int)_board[row, col]).ToString(); 
+            }
+        }
+
+        private string BuildBreakLine()
+        {
+            var result = "";
+            for (int i = 0; i < BoardSize; i++)
+            {
+                result += "_____";
+                result += (i == BoardSize - 1) ? "" : "|";
+
+            }
+            return result + "\n";
+        }
+
+        private string BuildEmptyLine()
+        {
+            var result = "";
+            for (int i = 0; i < BoardSize; i++)
+            {
+                result += "     ";
+                result += (i == BoardSize - 1) ? "" : "|";
+
+            }
+            return result + "\n";
         }
 
         private int GetCol(int choice)
