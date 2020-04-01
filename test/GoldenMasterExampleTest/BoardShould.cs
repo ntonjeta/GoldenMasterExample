@@ -20,6 +20,7 @@ namespace GoldenMasterExampleTest
         private const int FivethChoice = 5;
         private const int EighthChoice = 8;
         private const int ThirdChoice = 3;
+        private const int NinthChoice = 9;
         private readonly char[,] InitialBoard = new char[BoardSize, BoardSize]{
                 { '1', '2', '3' },
                 { '4', '5', '6' },
@@ -97,14 +98,14 @@ namespace GoldenMasterExampleTest
         [Test]
         public void CheckVerticalWinningCondition()
         {
-            _board.UpdateBoard(PlayerOne,FirstChoice);
+            _board.UpdateBoard(PlayerOne, FirstChoice);
             _board.UpdateBoard(PlayerOne, FourtChoice);
             _board.UpdateBoard(PlayerOne, SeventhChoice);
 
             Assert.AreEqual(Win, _board.CheckWin());
 
             _board = new Board(BoardSize);
-            _board.UpdateBoard(PlayerOne,SecondChoice);
+            _board.UpdateBoard(PlayerOne, SecondChoice);
             _board.UpdateBoard(PlayerOne, FivethChoice);
             _board.UpdateBoard(PlayerOne, EighthChoice);
 
@@ -114,9 +115,19 @@ namespace GoldenMasterExampleTest
         [Test]
         public void CheckOrizontalWinningCondition()
         {
-            _board.UpdateBoard(PlayerOne,FirstChoice);
-            _board.UpdateBoard(PlayerOne,SecondChoice);
+            _board.UpdateBoard(PlayerOne, FirstChoice);
+            _board.UpdateBoard(PlayerOne, SecondChoice);
             _board.UpdateBoard(PlayerOne, ThirdChoice);
+
+            Assert.AreEqual(Win, _board.CheckWin());
+        }
+
+        [Test]
+        public void CheckDiagonalWinningCondition()
+        {
+            _board.UpdateBoard(PlayerOne, FirstChoice);
+            _board.UpdateBoard(PlayerOne, FivethChoice);
+            _board.UpdateBoard(PlayerOne, NinthChoice);
 
             Assert.AreEqual(Win, _board.CheckWin());
         }
