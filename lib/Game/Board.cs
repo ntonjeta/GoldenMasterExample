@@ -130,24 +130,33 @@ namespace Tris
 
         private bool CheckDiagonalWinning()
         {
-            for (int i = 1; i < BoardSize; i++)
-            {
-                var result = 1;
-                var value = _board[0, 0];
-                if (_board[i, i] != value) result = -1;
-                if (result == 1)
-                    return true;
-            }
+            if (CheckMajorDiagonal())
+                return true;
 
+            if (CheckMinorDiagonal())
+                return true;
+
+            return false;
+        }
+
+        private bool CheckMajorDiagonal()
+        {
+            var v = _board[0, 0];
             for (int i = 1; i < BoardSize; i++)
             {
-                var result = 1;
-                var value = _board[0, BoardSize - 1];
-                if (_board[i, BoardSize - (i + 1)] != value) result = -1;
-                if (result == 1)
-                    return true;
+                if (_board[i, i] != v) return false;
             }
-            return false;
+            return true;
+        }
+
+        private bool CheckMinorDiagonal()
+        {
+            var value = _board[0, BoardSize - 1];
+            for (int i = 1; i < BoardSize; i++)
+            {
+                if (_board[i, BoardSize - (i + 1)] != value) return false;
+            }
+            return true;
         }
 
         private bool CheckVerticalWinning()
