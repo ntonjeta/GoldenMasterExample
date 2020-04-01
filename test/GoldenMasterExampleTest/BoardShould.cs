@@ -130,6 +130,13 @@ namespace GoldenMasterExampleTest
             _board.UpdateBoard(PlayerOne, NinthChoice);
 
             Assert.AreEqual(Win, _board.CheckWin());
+
+            _board = new Board(BoardSize);
+            _board.UpdateBoard(PlayerOne, ThirdChoice);
+            _board.UpdateBoard(PlayerOne, FivethChoice);
+            _board.UpdateBoard(PlayerOne, SeventhChoice);
+
+            Assert.AreEqual(Win, _board.CheckWin());
         }
     }
 }

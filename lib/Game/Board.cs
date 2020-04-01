@@ -124,6 +124,15 @@ namespace Tris
                 if (result == 1)
                     return true;
             }
+
+            for (int i = 1; i < BoardSize; i++)
+            {
+                var result = 1;
+                var value = _board[0, BoardSize - 1];
+                if (_board[i, BoardSize - (i + 1)] != value) result = -1;
+                if (result == 1)
+                    return true;
+            }
             return false;
         }
 
