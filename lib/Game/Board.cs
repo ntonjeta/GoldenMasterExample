@@ -38,6 +38,16 @@ namespace Tris
             return _board;
         }
 
+        public char GetCellValue(int choice)
+        {
+            var row = GetRow(choice);
+            var col = GetCol(choice);
+
+            return (_board[row, col] != PlayerOneMark && _board[row, col] != PlayerTwoMark)
+            ? '-'
+            : _board[row, col];
+        }
+
         public bool UpdateBoard(int player, int choice)
         {
             var row = GetRow(choice);
@@ -45,7 +55,7 @@ namespace Tris
 
             if (isCellAlreadyTaken(row, col))
                 return false;
-                
+
             _board[row, col] = GetPlayerMarker(player);
             return true;
         }
@@ -70,5 +80,6 @@ namespace Tris
         {
             return (actualPlayer == PlayerTwoId) ? PlayerTwoMark : PlayerOneMark;
         }
+
     }
 }
