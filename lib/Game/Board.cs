@@ -40,18 +40,30 @@ namespace Tris
 
         public bool UpdateBoard(int player, int choice)
         {
-            var row = (choice -1) / BoardSize;
-            var col = (choice -1) % BoardSize;
-            if (isCellAlreadyTaken(row,col))
+            var row = GetRow(choice);
+            var col = GetCol(choice);
+
+            if (isCellAlreadyTaken(row, col))
                 return false;
+                
             _board[row, col] = GetPlayerMarker(player);
             return true;
+        }
+
+        private int GetCol(int choice)
+        {
+            return (choice - 1) % BoardSize;
+        }
+
+        private int GetRow(int choice)
+        {
+            return (choice - 1) / BoardSize;
         }
 
         private bool isCellAlreadyTaken(int row, int col)
         {
             var cellValue = _board[row, col];
-            return  cellValue == PlayerOneMark || cellValue == PlayerTwoMark;
+            return cellValue == PlayerOneMark || cellValue == PlayerTwoMark;
         }
 
         private static char GetPlayerMarker(int actualPlayer)
