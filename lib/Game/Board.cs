@@ -80,7 +80,7 @@ namespace Tris
             result =
                 (row != BoardSize - 1)
                     ? result + "_____|_____|_____\n"
-                    : result + emptyLine;
+                    : result + "     |     |     ";
 
             return result;
         }
