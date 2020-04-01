@@ -77,7 +77,7 @@ namespace Tris
                 emptyLine +
                 "  " + _board[row, 0] + "  |  " + _board[row, 1] + "  |  " + _board[row, 2] + "  \n";
 
-            result = 
+            result =
                 (row != BoardSize - 1)
                     ? result + "_____|_____|_____\n"
                     : result + emptyLine;
@@ -106,5 +106,18 @@ namespace Tris
             return (actualPlayer == PlayerTwoId) ? PlayerTwoMark : PlayerOneMark;
         }
 
+        public int CheckWin()
+        {
+            // Vertial winning condition
+            for (int col = 0; col < BoardSize; col++)
+            {
+                var value = _board[0, col];
+                for (int row = 1; row < BoardSize; row++)
+                {
+                    if (_board[row, col] != value) return 1;
+                }
+            }
+            return -1;
+        }
     }
 }

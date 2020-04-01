@@ -6,7 +6,7 @@ namespace GoldenMasterExampleTest
 {
     public class BoardShould
     {
-        private const int Boardsize = 3;
+        private const int BoardSize = 3;
         private const int PlayerOne = 1;
         private const int PlayerTwo = 0;
         private const int FirstChoice = 1;
@@ -14,17 +14,18 @@ namespace GoldenMasterExampleTest
         private const char NotMarkedCellValue = '-';
         private const char PlayerOneMark = 'X';
         private const int LargestBoardSize = 4;
-        private readonly char[,] InitialBoard = new char[Boardsize, Boardsize]{
+        private const int Win = 1;
+        private readonly char[,] InitialBoard = new char[BoardSize, BoardSize]{
                 { '1', '2', '3' },
                 { '4', '5', '6' },
                 { '7', '8', '9' }
             };
-        private readonly char[,] OneChangeBoard = new char[Boardsize, Boardsize]{
+        private readonly char[,] OneChangeBoard = new char[BoardSize, BoardSize]{
                 { 'X' , '2', '3'},
                 { '4', '5', '6' },
                 { '7', '8', '9'}
             };
-        private readonly char[,] TwoChangeBoard = new char[Boardsize, Boardsize]{
+        private readonly char[,] TwoChangeBoard = new char[BoardSize, BoardSize]{
                 { 'X' , 'O', '3'},
                 { '4', '5', '6' },
                 { '7', '8', '9'}
@@ -35,7 +36,7 @@ namespace GoldenMasterExampleTest
         [SetUp]
         public void CreateBoard()
         {
-            _board = new Board(Boardsize);
+            _board = new Board(BoardSize);
         }
 
         [Test]
@@ -73,19 +74,37 @@ namespace GoldenMasterExampleTest
         public void PrintBoard()
         {
             var expectedBoard =
-            "     |     |     \n" +
-            "  X  |  2  |  3  \n" +
-            "_____|_____|_____\n" +
-            "     |     |     \n" +
-            "  4  |  5  |  6  \n" +
-            "_____|_____|_____\n" +
-            "     |     |     \n" +
-            "  7  |  8  |  9  \n" +
-            "     |     |     \n";
+                "     |     |     \n" +
+                "  X  |  2  |  3  \n" +
+                "_____|_____|_____\n" +
+                "     |     |     \n" +
+                "  4  |  5  |  6  \n" +
+                "_____|_____|_____\n" +
+                "     |     |     \n" +
+                "  7  |  8  |  9  \n" +
+                "     |     |     \n";
 
             _board.UpdateBoard(PlayerOne, FirstChoice);
 
             StringAssert.AreEqualIgnoringCase(expectedBoard, _board.Print());
         }
+
+        [Test]
+        public void CheckVerticalWinningCondition()
+        {
+            _board.UpdateBoard(PlayerOne,FirstChoice);
+            _board.UpdateBoard(PlayerOne,4);
+            _board.UpdateBoard(PlayerOne,7);
+
+            Assert.AreEqual(Win, _board.CheckWin());
+
+            _board = new Board(BoardSize);
+            _board.UpdateBoard(PlayerOne,2);
+            _board.UpdateBoard(PlayerOne,5);
+            _board.UpdateBoard(PlayerOne,8);
+
+            Assert.AreEqual(Win, _board.CheckWin());
+        }
     }
+
 }
