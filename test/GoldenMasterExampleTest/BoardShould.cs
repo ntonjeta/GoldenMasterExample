@@ -24,21 +24,36 @@ namespace GoldenMasterExampleTest
         private const int NotWin = -1;
         private const int SixthChoice = 6;
         private const int Draw = 0;
-        private readonly char[,] InitialBoard = new char[BoardSize, BoardSize]{
-                { '1', '2', '3' },
-                { '4', '5', '6' },
-                { '7', '8', '9' }
-            };
-        private readonly char[,] OneChangeBoard = new char[BoardSize, BoardSize]{
-                { 'X' , '2', '3'},
-                { '4', '5', '6' },
-                { '7', '8', '9'}
-            };
-        private readonly char[,] TwoChangeBoard = new char[BoardSize, BoardSize]{
-                { 'X' , 'O', '3'},
-                { '4', '5', '6' },
-                { '7', '8', '9'}
-            };
+        private const string InitialBoard =
+                "     |     |     \n" +
+                "  1  |  2  |  3  \n" +
+                "_____|_____|_____\n" +
+                "     |     |     \n" +
+                "  4  |  5  |  6  \n" +
+                "_____|_____|_____\n" +
+                "     |     |     \n" +
+                "  7  |  8  |  9  \n" +
+                "     |     |     \n";
+        private const string OneChangeBoard =
+                "     |     |     \n" +
+                "  X  |  2  |  3  \n" +
+                "_____|_____|_____\n" +
+                "     |     |     \n" +
+                "  4  |  5  |  6  \n" +
+                "_____|_____|_____\n" +
+                "     |     |     \n" +
+                "  7  |  8  |  9  \n" +
+                "     |     |     \n";
+        private const string TwoChangeBoard =
+                "     |     |     \n" +
+                "  X  |  O  |  3  \n" +
+                "_____|_____|_____\n" +
+                "     |     |     \n" +
+                "  4  |  5  |  6  \n" +
+                "_____|_____|_____\n" +
+                "     |     |     \n" +
+                "  7  |  8  |  9  \n" +
+                "     |     |     \n";
 
         private Board _board;
 
@@ -51,7 +66,7 @@ namespace GoldenMasterExampleTest
         [Test]
         public void ReturnBoard()
         {
-            Assert.AreEqual(InitialBoard, _board.GetBoard());
+            Assert.AreEqual(InitialBoard, _board.Print());
         }
 
         [Test]
@@ -59,7 +74,7 @@ namespace GoldenMasterExampleTest
         {
             Assert.True(_board.UpdateBoard(PlayerOne, FirstChoice));
             Assert.True(_board.UpdateBoard(PlayerTwo, SecondChoice));
-            Assert.AreEqual(TwoChangeBoard, _board.GetBoard());
+            Assert.AreEqual(TwoChangeBoard, _board.Print());
         }
 
         [Test]
@@ -68,7 +83,7 @@ namespace GoldenMasterExampleTest
             Assert.True(_board.UpdateBoard(PlayerOne, FirstChoice));
 
             Assert.False(_board.UpdateBoard(PlayerTwo, FirstChoice));
-            Assert.AreEqual(OneChangeBoard, _board.GetBoard());
+            Assert.AreEqual(OneChangeBoard, _board.Print());
         }
 
         [Test]
@@ -92,6 +107,29 @@ namespace GoldenMasterExampleTest
                 "     |     |     \n" +
                 "  7  |  8  |  9  \n" +
                 "     |     |     \n";
+
+            _board.UpdateBoard(PlayerOne, FirstChoice);
+
+            StringAssert.AreEqualIgnoringCase(expectedBoard, _board.Print());
+        }
+
+        [Test]
+        public void PrintLargestBoard()
+        {
+            _board = new Board(LargestBoardSize);
+            var expectedBoard =
+                "     |     |     |     \n" +
+                "  X  |  2  |  3  |  4  \n" +
+                "_____|_____|_____|_____\n" +
+                "     |     |     |     \n" +
+                "  5  |  6  |  7  |  8  \n" +
+                "_____|_____|_____|_____\n" +
+                "     |     |     |     \n" +
+                "  9  |  10  |  11  |  12  \n" +
+                "_____|_____|_____|_____\n" +
+                "     |     |     |     \n" +
+                "  13  |  14  |  15  |  16  \n" +
+                "     |     |     |     \n";
 
             _board.UpdateBoard(PlayerOne, FirstChoice);
 
