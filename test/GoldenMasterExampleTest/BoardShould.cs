@@ -173,5 +173,14 @@ namespace GoldenMasterExampleTest
 
             Assert.AreEqual(Draw, _board.CheckWin());
         }
+
+        [Test]
+        public void NotWinningForDiagonalCheckWhenDiagonalIsNotComplete()
+        {
+            _board.UpdateBoard(PlayerOne, FirstChoice);
+            _board.UpdateBoard(PlayerOne, FivethChoice);
+
+            Assert.AreEqual(NotWin, _board.CheckWin());
+        }
     }
 }
