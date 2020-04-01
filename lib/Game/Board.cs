@@ -71,16 +71,16 @@ namespace Tris
 
         private string PrintRow(int row)
         {
-            var emptyLine = "     |     |     \n";
+            var emptyLine = "     |     |      \n";
 
             var result =
                 emptyLine +
-                "  " + _board[row, 0] + "  |  " + _board[row, 1] + "  |  " + _board[row, 2] + "  \n";
+                "  " + _board[row, 0] + "  |  " + _board[row, 1] + "  |  " + _board[row, 2] + "\n";
 
             result =
                 (row != BoardSize - 1)
-                    ? result + "_____|_____|_____\n"
-                    : result + "     |     |     ";
+                    ? result + "_____|_____|_____ \n"
+                    : result + "     |     |      ";
 
             return result;
         }

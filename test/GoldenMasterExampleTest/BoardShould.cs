@@ -83,15 +83,15 @@ namespace GoldenMasterExampleTest
         public void PrintBoard()
         {
             var expectedBoard =
-                "     |     |     \n" +
+                "     |     |      \n" +
                 "  X  |  2  |  3\n" +
-                "_____|_____|_____\n" +
-                "     |     |     \n" +
+                "_____|_____|_____ \n" +
+                "     |     |      \n" +
                 "  4  |  5  |  6\n" +
-                "_____|_____|_____\n" +
-                "     |     |     \n" +
+                "_____|_____|_____ \n" +
+                "     |     |      \n" +
                 "  7  |  8  |  9\n" +
-                "     |     |     ";
+                "     |     |      ";
 
             _board.UpdateBoard(PlayerOne, FirstChoice);
 
