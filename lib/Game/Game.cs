@@ -7,11 +7,11 @@ namespace Tris
     {
         private const int Player2 = 0;
         private const int NumberOfPlayer = 2;
-        private const int Boardsize = 3;
+        private const int DefaultBoardSize = 3;
 
-        public static void run()
+        public static void run(int boardSize = 0)
         {
-            Board board = new Board(Boardsize);
+            Board board = new Board((boardSize == 0) ? DefaultBoardSize : boardSize);
             int actualPlayer = 1;
 
             while (board.CheckWin() == -1)
