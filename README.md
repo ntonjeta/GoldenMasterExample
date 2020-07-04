@@ -2,7 +2,7 @@
 
 ## Article 
 
-Can found short explaination of example [here](https://www.blexin.com/en-US/Article/Blog/Golden-Master-Pattern-dont-fear-the-legacy-code-84)
+A short explaination of example can be found [here](https://www.blexin.com/en-US/Article/Blog/Golden-Master-Pattern-dont-fear-the-legacy-code-84)
 
 ## How use Golden Master Pattern for refactor Tic Tac Toe Game.
 
