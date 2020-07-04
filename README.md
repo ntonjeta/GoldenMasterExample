@@ -1,5 +1,9 @@
 # Golden Master Example
 
+## Article 
+
+Can found short explaination of example [here](https://www.blexin.com/en-US/Article/Blog/Golden-Master-Pattern-dont-fear-the-legacy-code-84)
+
 ## How use Golden Master Pattern for refactor Tic Tac Toe Game.
 
 Our company devel a suite of command line games. One of the first game developed was a Tic Tac Toe game. 
